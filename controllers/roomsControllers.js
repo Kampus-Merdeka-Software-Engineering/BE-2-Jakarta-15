@@ -1,5 +1,26 @@
-import express, { request, response } from "express";
-import { createRoom, getAllRooms } from "../services/roomsServices.js";
+import express from "express";
+import { createRoom, getAllRooms, getRoomById } from "../services/roomsServices.js";
+
+
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
+export const getRoomItem = async (request, response) => {
+    const id = request.params.id;
+    const room = await getRoomById(id);
+
+    if(room === null) {
+        return response.status(404).json({
+            message: "Data Not Found",
+        });
+    }
+
+    response.json({
+        data: room,
+    });
+};
 
 /**
  *

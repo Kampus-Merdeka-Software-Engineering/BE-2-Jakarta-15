@@ -32,7 +32,7 @@ app.use((err, request, response, next) => {
 startSequelize();
 
 app.listen(port, () => {
-    console.log(`Server is running at port http://localhost${port}`);
+    console.log(`Server is running at port http://localhost:${port}`);
 });
 
 
